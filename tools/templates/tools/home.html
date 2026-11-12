@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class = "tool-parent-container">
+  {% for tool in tools %}
+    <div class=tool-container>
+      <div class=inner-tool-container >
+      The <a href=/{{tool.name}}> {{tool.name}}</a> is 
+        {% if tool.functional == True  %}
+          working
+        {% else %}
+          not working
+        {% endif %}
+        <br>
+        The tool needs to be maintained on {{ tool.needs_maintainance }}
+        <br>
+      </div>
+    {% if tool.functional == False%}
+      <div class = "tool-container tool-bad">
+        The tool is not working      
+    {% elif tool.remaining_time.days < 0 %}
+      <div class = "tool-container tool-needs-maintainance">
+      This tool needs to be maintained
+    {% else %}
+      <div class = "tool-container tool-good"> The tool is working 
+    {% endif %}
+
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

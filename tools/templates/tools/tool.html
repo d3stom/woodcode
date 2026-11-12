@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div class = tool-container >
+    The {{ tool.name }} is {% if tool.functional == True %} working <br> The last issue was {{ tool.latest_issue }} {% else %} not working. <br> reported issue {{ tool.latest_issue}} 
+    {% endif  %}
+  </div>
+  
+    {% if tool.remaining_time.days >= 0 %}
+      <div class = tool-container>
+      Maintainance will be needed in {{tool.remaining_time.days}} days
+    {% elif tool.remaining_time.days < 0 %}
+      <div class = "tool-container tool-needs-maintainance">
+      This tool needs to be maintained
+    {% endif %}
+
+  </div>
+
+
+  {% if tool.functional == True %}  
+    <form method="post" action="{% url 'update_tool_status' name=tool.name status='down' %}">
+    {% csrf_token %}
+    <textarea name="latest_issue" rows="4" cols="50">write a brief description of the issue     </textarea>
+  <button type="submit">Mark as down</button>
+</form>
+  {% elif tool.functional == False %}
+<form method="post" action="{% url 'update_tool_status' name=tool.name status='up' %}">
+  {% csrf_token %}
+  <button type="submit">Mark as up</button>
+</form>
+  {% endif %}
+
+{% endblock content %}

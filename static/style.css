@@ -1,0 +1,35 @@
+body {
+  background-color: #282A36;
+  color: #F8F8F2;
+}
+a {color: #8BE9FD}
+.tool-container{
+  border-style: solid;
+  border-width: 3px;
+  border-color: #44475A;
+  border-radius: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.inner-tool-container{
+  width: 75%
+}
+
+.tool-good{
+  background-color: #50FA7B;
+  width: 25%;
+  color:  #282A36;
+}
+.tool-bad{
+  background-color: #FF5555;
+  width: 25%;
+  color:  #282A36;
+}
+.tool-needs-maintainance{
+  background-color: #FFB86C;
+  width: 25%;
+  color:  #282A36;
+}
