@@ -41,7 +41,7 @@ def tool_status_update(request, name, status):
         tool.functional = True
         response = HttpResponse("The tool is now up")
         tool.save(update_fields=["functional"])
-    return response
+    return redirect("tool page", name=name)
 
 @require_http_methods(["POST"])
 def tool_maintained(request, name):

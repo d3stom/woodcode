@@ -21,12 +21,12 @@
     <form method="post" action="{% url 'update_tool_status' name=tool.name status='down' %}">
     {% csrf_token %}
     <textarea name="latest_issue" rows="4" cols="50">write a brief description of the issue     </textarea>
-  <button type="submit">Mark as down</button>
+    <button type="submit">Mark {{ tool.name }} down</button>
 </form>
   {% elif tool.functional == False %}
 <form method="post" action="{% url 'update_tool_status' name=tool.name status='up' %}">
   {% csrf_token %}
-  <button type="submit">Mark as up</button>
+  <button type="submit">Mark {{tool.name }} up</button>
 </form>
   {% endif %}
 
