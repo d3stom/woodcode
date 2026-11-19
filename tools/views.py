@@ -26,7 +26,6 @@ def tool_view(request, name):
     context = {"tool":tool}
     return render(request, "tools/tool.html", context)
 
-@csrf_exempt
 @require_http_methods(["POST"])
 def tool_status_update(request, name, status):
     tool = Tool.objects.get(name=name)
@@ -44,7 +43,6 @@ def tool_status_update(request, name, status):
         tool.save(update_fields=["functional"])
     return response
 
-@csrf_exempt
 @require_http_methods(["POST"])
 def tool_maintained(request, name):
     tool = Tool.objects.get(name=name)
