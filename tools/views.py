@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
+from django.shortcuts import get_object_or_404, redirect
+
+
 from .models import Tool
 import json
 
