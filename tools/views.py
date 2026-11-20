@@ -52,4 +52,4 @@ def tool_maintained(request, name):
     Needs_maintainance = (datetime.now() + timedelta(tool.maintanance_interval*30)).strftime("%Y-%m-%d")
     tool.last_maintained = datetime.now().strftime("%Y-%m-%d")
     tool.save(update_fields=["last_maintained"])
-    return HttpResponse(f"the {tool} is now set to be maintained untill {Needs_maintainance}")
+    return redirect("tool page", name=name) 
